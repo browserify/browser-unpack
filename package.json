@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "concat-stream": "~1.2.1",
-    "esprima": "~1.0.4"
+    "esprima": "~1.0.4",
+    "minimist": "0.0.5"
   },
   "devDependencies": {
     "browser-pack": "~2.0.0",
