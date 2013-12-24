@@ -15,7 +15,9 @@ module.exports = function (src) {
     
     var files = args[0].properties;
     var cache = args[1];
-    var entries = args[2];
+    var entries = args[2].elements.map(function (e) {
+        return e.value
+    });
     
     return files.map(function (file) {
         var body = file.value.elements[0].body.body;
@@ -34,10 +36,12 @@ module.exports = function (src) {
             acc[dep.key.value] = dep.value.value;
             return acc;
         }, {});
-        return {
+        var row = {
             id: file.key.value,
             source: src.slice(start, end).toString('utf8'),
             deps: deps
         };
+        if (entries.indexOf(row.id) >= 0) row.entry = true;
+        return row;
     });
 };
