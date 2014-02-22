@@ -35,8 +35,13 @@ module.exports = function (src) {
         var body = file.value.elements[0].body.body;
         var start, end;
         if (body.length === 0) {
-            start = body.range[0];
-            end = body.range[1];
+            if (body.range) {
+                start = body.range[0];
+                end = body.range[1];
+            } else {
+                start = 0;
+                end = 0;
+            }
         }
         else {
             start = body[0].range[0];
