@@ -4,9 +4,15 @@ module.exports = function (src) {
     var ast = parse(src, { range: true });
     if (ast.body.length !== 1) return;
     if (ast.body[0].type !== 'ExpressionStatement') return;
-    if (ast.body[0].expression.type !== 'CallExpression') return;
-    
-    var args = ast.body[0].expression.arguments;
+    if (ast.body[0].expression.type === 'UnaryExpression') {
+        var body = ast.body[0].expression.argument;
+    } else {
+        var body = ast.body[0].expression;
+    }
+
+    if (body.type !== 'CallExpression') return;
+
+    var args = body.arguments;
     if (args.length !== 3) return;
     
     if (args[0].type !== 'ObjectExpression') return;
