@@ -13,6 +13,7 @@ module.exports = function (src) {
     if (body.type !== 'CallExpression') return;
 
     var args = body.arguments;
+    if (args.length === 1) args = extractStandalone(args) || args;
     if (args.length !== 3) return;
     
     if (args[0].type !== 'ObjectExpression') return;
@@ -50,4 +51,16 @@ module.exports = function (src) {
         if (entries.indexOf(row.id) >= 0) row.entry = true;
         return row;
     });
+};
+
+function extractStandalone (args) {
+    if (args[0].type !== 'FunctionExpression') return;
+    if (args[0].body.length < 2) return;
+    if (args[0].body.body.length < 2) return;
+
+    args = args[0].body.body[1].argument;
+    if (args.type !== 'CallExpression') return;
+    if (args.callee.type !== 'CallExpression') return;
+
+    return args.callee.arguments;
 };
