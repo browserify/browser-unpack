@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "concat-stream": "~1.2.1",
-    "esprima-fb": "^3001.1.0-dev-harmony-fb",
+    "esprima-fb": "3001.1.0-dev-harmony-fb",
     "minimist": "0.0.5"
   },
   "devDependencies": {
