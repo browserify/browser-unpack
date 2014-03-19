@@ -2,6 +2,11 @@ var parse = require('esprima').parse;
 
 module.exports = function (src) {
     var ast = parse(src, { range: true });
+
+    ast.body = ast.body.filter(function(node) {
+        return node.type !== 'EmptyStatement';
+    });
+
     if (ast.body.length !== 1) return;
     if (ast.body[0].type !== 'ExpressionStatement') return;
     if (ast.body[0].expression.type === 'UnaryExpression') {
