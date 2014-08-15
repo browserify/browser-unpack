@@ -11,6 +11,8 @@ module.exports = function (src) {
     if (ast.body[0].type !== 'ExpressionStatement') return;
     if (ast.body[0].expression.type === 'UnaryExpression') {
         var body = ast.body[0].expression.argument;
+    } else if (ast.body[0].expression.type === 'AssignmentExpression') {
+        var body = ast.body[0].expression.right;
     } else {
         var body = ast.body[0].expression;
     }
