@@ -1,6 +1,14 @@
 var parse = require('esprima-fb').parse;
 
 module.exports = function (src) {
+    // If src is a Buffer, esprima will just stringify it, so we beat them to
+    // the punch. This avoids the problem where we're using esprima's range
+    // indexes -- which are meant for a UTF-16 string -- in a buffer that
+    // contains UTF-8 encoded text.
+    if (typeof src !== 'string') {
+        src = String(src);
+    }
+
     var ast = parse(src, { range: true });
 
     ast.body = ast.body.filter(function(node) {
@@ -57,7 +65,7 @@ module.exports = function (src) {
         }, {});
         var row = {
             id: file.key.value,
-            source: src.slice(start, end).toString('utf8'),
+            source: src.slice(start, end),
             deps: deps
         };
         if (entries.indexOf(row.id) >= 0) row.entry = true;
