@@ -60,7 +60,10 @@ module.exports = function (src) {
         
         var depProps = file.value.elements[1].properties;
         var deps = depProps.reduce(function (acc, dep) {
-            acc[dep.key.value] = dep.value.value;
+            var key = dep.key.type === 'Literal' 
+                ? dep.key.value 
+                : dep.key.name;
+            acc[key] = dep.value.value;
             return acc;
         }, {});
         var row = {
