@@ -7,6 +7,7 @@
     "browser-unpack": "bin/cmd.js"
   },
   "dependencies": {
+    "acorn": "^1.0.3",
     "concat-stream": "~1.2.1",
     "esprima-fb": "3001.1.0-dev-harmony-fb",
     "minimist": "0.0.5"
