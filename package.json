@@ -7,9 +7,8 @@
     "browser-unpack": "bin/cmd.js"
   },
   "dependencies": {
-    "acorn": "^1.0.3",
+    "acorn": "^2.1.0",
     "concat-stream": "~1.2.1",
-    "esprima-fb": "3001.1.0-dev-harmony-fb",
     "minimist": "0.0.5"
   },
   "devDependencies": {
@@ -32,8 +31,8 @@
     "unpack"
   ],
   "author": {
-    "name": "James Halliday",
     "email": "mail@substack.net",
+    "name": "James Halliday",
     "url": "http://substack.net"
   },
   "license": "MIT"

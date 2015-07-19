@@ -1,4 +1,4 @@
-var parse = require('esprima-fb').parse;
+var parse = require('acorn').parse;
 
 module.exports = function (src) {
     // If src is a Buffer, esprima will just stringify it, so we beat them to
@@ -9,7 +9,10 @@ module.exports = function (src) {
         src = String(src);
     }
 
-    var ast = parse(src, { range: true });
+    var ast = parse(src, {
+      range: true,
+      ecmaVersion: 6
+    });
 
     ast.body = ast.body.filter(function(node) {
         return node.type !== 'EmptyStatement';
@@ -45,17 +48,12 @@ module.exports = function (src) {
         var body = file.value.elements[0].body.body;
         var start, end;
         if (body.length === 0) {
-            if (body.range) {
-                start = body.range[0];
-                end = body.range[1];
-            } else {
-                start = 0;
-                end = 0;
-            }
+            start = body.start || 0;
+            end = body.end || 0;
         }
         else {
-            start = body[0].range[0];
-            end = body[body.length-1].range[1];
+            start = body[0].start;
+            end = body[body.length-1].end;
         }
         
         var depProps = file.value.elements[1].properties;
