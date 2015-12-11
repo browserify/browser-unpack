@@ -32,7 +32,7 @@ module.exports = function (src) {
 
     var args = body.arguments;
     if (args.length === 1) args = extractStandalone(args) || args;
-    if (args.length !== 3) return;
+    if (args.length !== 6) return;
     
     if (args[0].type !== 'ObjectExpression') return;
     if (args[1].type !== 'ObjectExpression') return;
