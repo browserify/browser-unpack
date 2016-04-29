@@ -22,6 +22,10 @@ process.stdin.pipe(concat(function (body) {
     console.log('[');
     rows.forEach(function (row, index) {
         if (index > 0) console.log(',');
+        Object.keys(row.deps).forEach(function (key) {
+            if (typeof row.deps[key] === 'undefined')
+                row.deps[key] = null;
+        });
         console.log(JSON.stringify(row));
     });
     console.log(']');
