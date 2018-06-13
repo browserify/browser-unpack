@@ -20,9 +20,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/substack/browser-unpack.git"
+    "url": "git://github.com/browserify/browser-unpack.git"
   },
-  "homepage": "https://github.com/substack/browser-unpack",
+  "homepage": "https://github.com/browserify/browser-unpack",
   "keywords": [
     "browserify",
     "bundle",
