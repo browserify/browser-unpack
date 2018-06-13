@@ -11,7 +11,7 @@ module.exports = function (src) {
 
     var ast = parse(src, {
       range: true,
-      ecmaVersion: 8
+      ecmaVersion: 2019
     });
 
     ast.body = ast.body.filter(function(node) {
