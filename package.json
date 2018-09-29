@@ -7,7 +7,7 @@
     "browser-unpack": "bin/cmd.js"
   },
   "dependencies": {
-    "acorn": "^5.6.2",
+    "acorn-node": "^1.5.2",
     "concat-stream": "^1.5.0",
     "minimist": "^1.1.1"
   },
