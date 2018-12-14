@@ -9,10 +9,7 @@ module.exports = function (src) {
         src = String(src);
     }
 
-    var ast = parse(src, {
-      range: true,
-      ecmaVersion: 2019
-    });
+    var ast = parse(src, { range: true });
 
     ast.body = ast.body.filter(function(node) {
         return node.type !== 'EmptyStatement';
