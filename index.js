@@ -1,4 +1,4 @@
-var parse = require('acorn').parse;
+var parse = require('acorn-node').parse;
 
 module.exports = function (src) {
     // If src is a Buffer, esprima will just stringify it, so we beat them to
