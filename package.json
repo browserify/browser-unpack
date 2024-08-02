@@ -16,7 +16,8 @@
     "tape": "^4.0.1"
   },
   "scripts": {
-    "test": "tape test/*.js"
+    "tests-only": "tape test/*.js",
+    "test": "npm run tests-only"
   },
   "repository": {
     "type": "git",
