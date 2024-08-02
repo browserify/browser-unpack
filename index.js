@@ -62,7 +62,9 @@ module.exports = function (src) {
             return acc;
         }, {});
         var row = {
-            id: file.key.value,
+            id: file.key.type === 'Literal'
+                ? file.key.value
+                : file.key.name,
             source: src.slice(start, end),
             deps: deps
         };
